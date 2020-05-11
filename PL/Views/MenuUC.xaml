@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="PL.Views.MenuUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PL.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="200">
+    <Grid>
+        <StackPanel>
+            <Button x:Name="dashBoardButton"  Margin="10" Command="{Binding ReplaceViewCommand}" CommandParameter="{Binding ElementName=dashBoardText, Path=Text}">
+                <Grid Width="150">
+                    <materialDesign:PackIcon Kind="ViewDashboard" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="dashBoardText" HorizontalAlignment="Center" Text="DASHBOARD"/>
+                </Grid>
+            </Button>
+
+            <Button x:Name="profilButton" Margin="10" Command="{Binding ReplaceViewCommand}" CommandParameter="{Binding ElementName=profilText, Path=Text}">
+                <Grid Width="150">
+                    <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="profilText" HorizontalAlignment="Center" Text="PROFIL" />
+                </Grid>
+            </Button>
+
+            <Button x:Name="dairyButton" Margin="10" Command="{Binding ReplaceViewCommand}" CommandParameter="{Binding ElementName=dairyText, Path=Text}">
+                <Grid Width="150">
+                    <materialDesign:PackIcon Kind="FoodForkDrink" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="dairyText" HorizontalAlignment="Center" Text="DAIRY"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

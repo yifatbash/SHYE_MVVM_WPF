@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="SHYE.FoodDataUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SHYE"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:BE="clr-namespace:BE;assembly=BE"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="200">
+    <Grid Background="White" d:DataContext="{d:DesignInstance BE:Food }">
+        <TextBlock x:Name="name" Text="{Binding Name}" Grid.Row="0" Margin="0,10"  FontFamily="Calibri" FontSize="18" />
+        <StackPanel Margin="5">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock x:Name="calories"  Text="100" FontSize="14"/>
+                <TextBlock Text=" g" FontSize="14"/>
+            </StackPanel>
+            <TextBlock Text="Calories" Margin="5" FontSize="10" HorizontalAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</UserControl>

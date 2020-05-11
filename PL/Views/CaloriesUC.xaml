@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="PL.Views.CaloriesUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:syncfusion="clr-namespace:Syncfusion.UI.Xaml.Charts;assembly=Syncfusion.SfChart.WPF"
+             xmlns:local="clr-namespace:PL.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid >
+
+        <syncfusion:SfChart  AreaBackground="AntiqueWhite" Height="300" Width="400" >
+            
+            <syncfusion:SfChart.Header>
+                <TextBlock FontSize="14" Text="Calories" Margin="10">
+
+                </TextBlock>
+            </syncfusion:SfChart.Header>
+
+            <!--Initialize the horizontal axis for SfChart-->
+            <syncfusion:SfChart.PrimaryAxis>
+                <syncfusion:DateTimeAxis x:Name="DateAxis" LabelFormat="dd/MM" Interval="3" LabelRotationAngle = "90" FontSize="8"/>
+            </syncfusion:SfChart.PrimaryAxis>
+
+            <!--Initialize the vertical axis for SfChart-->
+            <syncfusion:SfChart.SecondaryAxis>
+                <syncfusion:NumericalAxis  FontSize="8" Minimum="0" Maximum="3000"/>
+            </syncfusion:SfChart.SecondaryAxis>
+
+            <!--Adding Legend to the SfChart-->
+            <syncfusion:SfChart.Legend>
+                <syncfusion:ChartLegend Visibility="Collapsed"/>
+            </syncfusion:SfChart.Legend>
+
+            <!--Initialize the series for SfChart-->
+            <syncfusion:ColumnSeries Interior="DarkGreen"  syncfusion:ChartSeriesBase.Spacing="0.8" Label="Heights" ItemsSource="{Binding Data}" XBindingPath="Date" YBindingPath="TotalCalories" >
+                <syncfusion:ColumnSeries.AdornmentsInfo>
+                    <syncfusion:ChartAdornmentInfo ShowLabel="True" >
+                    </syncfusion:ChartAdornmentInfo>
+                </syncfusion:ColumnSeries.AdornmentsInfo>
+            </syncfusion:ColumnSeries>
+
+        </syncfusion:SfChart>
+    </Grid>
+</UserControl>

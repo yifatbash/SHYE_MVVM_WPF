@@ -1,0 +1,246 @@
+﻿<UserControl x:Class="SHYE.AddFoodUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:SHYE"
+              xmlns:uc="clr-namespace:SHYE"
+             xmlns:converter="clr-namespace:PL.converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="600">
+    <Grid>
+
+        <Grid.Resources>
+            <converter:StringToMealTypeConverter x:Key="StringToMealTypeConverter"/>
+            <converter:StringToDateTimeConverter x:Key="StringToDateTimeConverter"/>
+            <converter:StringToDoubleConverter x:Key="StringToDoubleConverter"/>
+            <DataTemplate x:Key="foodItems" DataType="local:BE:Food" >
+                <uc:FoodTemplateUC/>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"></RowDefinition>
+            <RowDefinition Height="56*"></RowDefinition>
+            <RowDefinition Height="359*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="..\Images\fruits.jpg" Opacity="0.6"/>
+        </Grid.Background>
+        <TextBlock x:Name="mealType" Foreground="white" FontSize="24" Background="Black" TextAlignment="Center" Padding="5" Grid.ColumnSpan="2" Opacity="0.7" Margin="0,0,0,0.333"/>
+        <DatePicker
+            Name="chosenDate"
+            Grid.Row="1" 
+                    Grid.ColumnSpan="2" 
+                    materialDesign:HintAssist.Hint="Pick Date" 
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Height="37" Margin="250,9.667,250,9.333" 
+            SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+        <Grid Grid.Row="2" Grid.Column="1" Margin="0,0.667,0,0">
+            <Rectangle Fill="Black" Opacity="0.5"/>
+        </Grid>
+        <ScrollViewer Grid.Row="2" Grid.Column="1" Margin="0,0.667,0,0">
+
+            <StackPanel Grid.Row="2" Grid.Column="2">
+                <ListBox x:Name="foodListView" ItemsSource="{Binding Foods}" ItemTemplate="{StaticResource foodItems }" Margin="10" HorizontalAlignment="Center">
+                </ListBox>
+
+                <!--ItemTemplate="{StaticResource foodItems}"/>-->
+                <!--ItemsSource="{Binding Source={StaticResource FoodList}}"-->
+                <!--<uc:FoodTemplateUC Margin="0 5" ></uc:FoodTemplateUC>
+                <uc:FoodTemplateUC Margin="0 5" ></uc:FoodTemplateUC>
+                <uc:FoodTemplateUC Margin="0 5" ></uc:FoodTemplateUC>
+                <uc:FoodTemplateUC Margin="0 5" ></uc:FoodTemplateUC>
+                <uc:FoodTemplateUC Margin="0 5" ></uc:FoodTemplateUC>
+                <uc:FoodTemplateUC Margin="0 5" ></uc:FoodTemplateUC>
+                <uc:FoodTemplateUC Margin="0 5" ></uc:FoodTemplateUC>
+                <uc:FoodTemplateUC Margin="0 5" ></uc:FoodTemplateUC>-->
+            </StackPanel>
+        </ScrollViewer>
+
+        <Grid Grid.Row="2" Margin="0,0.667,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="11*"/>
+                <RowDefinition Height="13*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Margin="0,0,0,181" Grid.RowSpan="2">
+                <materialDesign:ColorZone Mode="PrimaryMid" Padding="16">
+                    <DockPanel>
+                        <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:ColorZone Mode="Standard" 
+                                                  Padding="8 4 8 4"
+                                                  CornerRadius="2" 
+                                                  Panel.ZIndex="1" 
+                                                  Margin="16 0 0 0" 
+                                                  materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                        <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                                    </Button>
+                                    <TextBox Grid.Column="1" 
+                                         Margin="8 0 0 0" 
+                                         materialDesign:HintAssist.Hint="Enter food name " 
+                                         materialDesign:TextFieldAssist.DecorationVisibility="Hidden" 
+                                         BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
+                                </Grid>
+                            </materialDesign:ColorZone>
+                        </StackPanel>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+                <materialDesign:ColorZone Mode="PrimaryMid" Padding="16">
+                    <DockPanel>
+                        <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True">
+                            <materialDesign:ColorZone Mode="Standard" 
+                                                  Padding="8 4 8 4"
+                                                  CornerRadius="2" 
+                                                  Panel.ZIndex="1" 
+                                                  Margin="16 0 0 0" 
+                                                  materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                        <materialDesign:PackIcon Kind="Scale" Opacity=".56" />
+                                    </Button>
+                                    <TextBox x:Name="foodAmount" Grid.Column="1" Text="{Binding Amount, Converter={StaticResource StringToDoubleConverter}, Mode=OneWayToSource}"
+                                         Margin="8 0 0 0" 
+                                         materialDesign:HintAssist.Hint="Enter amount   (gram)" 
+                                         materialDesign:TextFieldAssist.DecorationVisibility="Hidden" 
+                                         BorderThickness="0" MinWidth="200" VerticalAlignment="Center" TextChanged="foodAmount_TextChanged" />
+                                    <!--<TextBlock Grid.Column="1" Text="(gram)" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="20 0"/>-->
+                                </Grid>
+                            </materialDesign:ColorZone>
+                            <Button x:Name="addButton" Style="{DynamicResource MaterialDesignToolForegroundButton}" 
+                                Command="{Binding ApiCommand}"
+                                    IsEnabled="False"
+                                    Margin="30 0 0 0" 
+                                Panel.ZIndex="0">
+                                <materialDesign:PackIcon Kind="Send" />
+                            </Button>
+                        </StackPanel>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+            </StackPanel>
+            <materialDesign:ColorZone Mode="PrimaryMid" Padding="16" Height="72">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True">
+                        <materialDesign:ColorZone Mode="Standard" 
+                                                  Padding="8 4 8 4"
+                                                  CornerRadius="2" 
+                                                  Panel.ZIndex="1" 
+                                                  Margin="16 0 0 0" 
+                                                  materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                                </Button>
+                                <TextBox Grid.Column="1" 
+                                         Margin="8 0 0 0" 
+                                         materialDesign:HintAssist.Hint="Enter food name " 
+                                         materialDesign:TextFieldAssist.DecorationVisibility="Hidden" 
+                                         BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
+                            </Grid>
+                        </materialDesign:ColorZone>
+                    </StackPanel>
+                </DockPanel>
+            </materialDesign:ColorZone>
+            <materialDesign:ColorZone Mode="PrimaryMid" Padding="16" Height="72">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True">
+                        <materialDesign:ColorZone Mode="Standard" 
+                                                  Padding="8 4 8 4"
+                                                  CornerRadius="2" 
+                                                  Panel.ZIndex="1" 
+                                                  Margin="16 0 0 0" 
+                                                  materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon Kind="Food" Opacity=".56" />
+                                </Button>
+                                <TextBox x:Name="foodName" Grid.Column="1" Text="{Binding Name}"
+                                         Margin="8 0 0 0" 
+                                         materialDesign:HintAssist.Hint="Enter food name " 
+                                         materialDesign:TextFieldAssist.DecorationVisibility="Hidden" 
+                                         BorderThickness="0" MinWidth="200" VerticalAlignment="Center" TextChanged="foodName_TextChanged" />
+                            </Grid>
+                        </materialDesign:ColorZone>
+                    </StackPanel>
+                </DockPanel>
+            </materialDesign:ColorZone>
+
+            <Grid x:Name="showFoodDetails" Grid.Row="2">
+
+            </Grid>
+            <!--<materialDesign:ColorZone Mode="PrimaryMid" Padding="16">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True">
+                        <materialDesign:ColorZone Mode="Standard" 
+                                                  Padding="8 4 8 4"
+                                                  CornerRadius="2" 
+                                                  Panel.ZIndex="1" 
+                                                  Margin="16 0 0 0" 
+                                                  materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                                </Button>
+                                <TextBox Grid.Column="1" 
+                                         Margin="8 0 0 0" 
+                                         materialDesign:HintAssist.Hint="Search in food database " 
+                                         materialDesign:TextFieldAssist.DecorationVisibility="Hidden" 
+                                         BorderThickness="0" MinWidth="200" VerticalAlignment="Center" />
+                                <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2">
+                                    <materialDesign:PackIcon 
+                                        Kind="Microphone" 
+                                        Opacity=".56" 
+                                        Margin="8 0 0 0" />
+                                </Button>
+                            </Grid>
+                        </materialDesign:ColorZone>
+                        <Button Style="{DynamicResource MaterialDesignToolForegroundButton}" 
+                                Margin="8 0 0 0" 
+                                Panel.ZIndex="0">
+                            <materialDesign:PackIcon Kind="Send" />
+                        </Button>
+                    </StackPanel>
+                </DockPanel>
+            </materialDesign:ColorZone>-->
+        </Grid>
+        <Button Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10"
+                Command="{Binding ReplaceViewCommand}"
+  Style="{StaticResource MaterialDesignIconButton}"
+  ToolTip="MaterialDesignIconButton"
+  Background="{DynamicResource MaterialDesignTextFieldBoxBackground}">
+            <materialDesign:PackIcon
+    Kind="KeyboardBackspace" />
+        </Button>
+
+    </Grid>
+</UserControl>

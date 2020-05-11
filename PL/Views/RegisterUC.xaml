@@ -1,0 +1,139 @@
+﻿<UserControl x:Class="PL.Views.RegisterUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:PL"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"            
+             d:DesignHeight="650" d:DesignWidth="400">
+    <StackPanel Margin="20 10 20 10" Background="WhiteSmoke">
+        <TextBlock Text="YOUR PERSONNAL INFORMATION" HorizontalAlignment="Center" FontFamily="Ink Free" FontWeight="Bold" />
+        <TextBlock Text="Load your picture" TextAlignment="Center"  FontWeight="DemiBold" Margin="0 10"/>
+        <Grid>
+            <Button x:Name="image_butt" Height="100" Width="100"  HorizontalAlignment="Center" Command="{Binding MyOpenFileCommand}" Cursor="Pen">
+                <Ellipse x:Name="image_ellipse" Width="100" Height="100" HorizontalAlignment="Center">
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="image_imageBrush" ImageSource="{Binding Image_Uri}"  />
+                    </Ellipse.Fill>
+                </Ellipse>
+                <!--<Image  Height="100" Width="100" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />-->
+            </Button>
+        </Grid>
+        <Grid>
+            <materialDesign:PackIcon Kind="GenderMaleFemale" Margin="0 8"/>
+            <CheckBox x:Name="genderMale" Content="Male" Margin="50,10,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="genderFemale" Content="Female" Margin="150,10,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Margin="0 10 0 0">
+            <materialDesign:PackIcon Kind="AccountOutline" VerticalAlignment="Center" />
+            <TextBox Margin="20 0 0 10" x:Name="FirstNameTextBox" materialDesign:HintAssist.Hint="First Name" materialDesign:HintAssist.HelperText="Helper text longer than error">
+                <TextBox.Text>
+                    <Binding Path="FirstName" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <domain1:NotEmptyValidationRule
+                            ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:PL.Domain" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+        <Grid Margin="0 10 0 0">
+            <materialDesign:PackIcon Kind="AccountOutline" VerticalAlignment="Center" />
+            <TextBox Margin="20 0 0 10" x:Name="LastNameTextBox" materialDesign:HintAssist.Hint="Last Name" materialDesign:HintAssist.HelperText="Helper text longer than error">
+                <TextBox.Text>
+                    <Binding Path="LastName" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <domain1:NotEmptyValidationRule
+                            ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:PL.Domain" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+        <Grid Margin="0 10 0 0">
+            <materialDesign:PackIcon Kind="TelephoneIncoming" Margin="0 8 0 0"/>
+            <TextBox x:Name="PhoneTextBox"  Margin="20 0 0 0" materialDesign:HintAssist.Hint="Telephone" materialDesign:TransitionAssist.DisableTransitions="True">
+                <TextBox.Text>
+                    <Binding Path="PhoneNumber" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <domain1:NotEmptyValidationRule
+                            ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:PL.Domain" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+        <Grid Margin="0 0 0 0">
+            <materialDesign:PackIcon Kind="CalendarMonth" Margin="0 20 0 0 " />
+            <DatePicker Name="BirthdayDatePicker" Height="35" Margin="20 0 0 0" materialDesign:HintAssist.Hint="Date of birth" Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                <DatePicker.SelectedDate>
+                    <Binding Path="Birthday" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <domain1:NotEmptyValidationRule
+                            ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:PL.Domain" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+        </Grid>
+        <Grid  Margin="0 10 0 0">
+            <materialDesign:PackIcon Kind="EnvelopeOutline" Margin="0 8 0 0"/>
+            <TextBox x:Name="EmailTextBox" Margin="20 0 0 10"  materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.HelperText="Helper text longer than error">
+                <TextBox.Text>
+                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <domain1:NotEmptyValidationRule
+                            ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:PL.Domain" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+        <Grid Margin="0 0 0 0">
+            <materialDesign:PackIcon Kind="KeyMinus" Margin="0 8 "/>
+            <PasswordBox  x:Name="PasswordBox" Margin="20 0 0 0" PasswordChanged="PasswordBox_PasswordChanged"  materialDesign:HintAssist.Hint="Password" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:HintAssist.HelperText="At least 8 characters" />
+        </Grid>
+
+        <Grid Margin="0 20 0 0">
+            <materialDesign:PackIcon Kind="HumanMaleHeightVariant" Margin="0 5" />
+            <TextBox x:Name="HeightTextBox" Margin="20 0 0 10"  materialDesign:HintAssist.Hint="Height" materialDesign:HintAssist.HelperText="Helper text longer than error">
+                <TextBox.Text>
+                    <Binding Path="Height" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <domain1:NotEmptyValidationRule
+                            ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:PL.Domain" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+        <Grid Margin="0 10 0 0">
+            <materialDesign:PackIcon Kind="WeightKg" Margin="0 5"/>
+            <TextBox x:Name="WeightTextBox" Margin="20 0 0 10"  materialDesign:HintAssist.Hint="Weight" materialDesign:HintAssist.HelperText="Helper text longer than error">
+                <TextBox.Text>
+                    <Binding Path="Weight" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <domain1:NotEmptyValidationRule
+                            ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:PL.Domain" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+        <Grid Margin="0 10 0 0">
+            <materialDesign:PackIcon Kind="FoodForkDrink" Margin="0 8 0 0"/>
+            <TextBox  x:Name="WantedCaloriesTextBox" Margin="20 0 0 0" materialDesign:HintAssist.Hint="Wanted Calories" materialDesign:TransitionAssist.DisableTransitions="True">
+                <TextBox.Text>
+                    <Binding Path="Goal" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                        <Binding.ValidationRules>
+                            <domain1:NotEmptyValidationRule
+                            ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:PL.Domain" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+        <Button x:Name="Ok_butt" Content="Ok" Margin=" 0 20 0 0 " HorizontalAlignment="Right" Command="{Binding MyReplaceUCCommand}" CommandParameter="{Binding Content, ElementName=Ok_butt}"/>
+    </StackPanel>
+</UserControl>

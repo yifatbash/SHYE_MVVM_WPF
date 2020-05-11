@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="SHYE.AddMealUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:SHYE"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="250">
+    <Grid MaxWidth="250" MaxHeight="200">
+        <Button
+    Style="{StaticResource MaterialDesignRaisedButton}" Background="Gray" Opacity="0.9"
+    Height="200" BorderBrush="{x:Null}"
+    materialDesign:ButtonAssist.CornerRadius="15"
+    ToolTip="Click here to add some food" >
+
+            <StackPanel>
+                <TextBlock Text="{Binding Title}" HorizontalAlignment="right" FontSize="18"/>
+                <Grid>
+                    <Image Source="{Binding ImageUri}"  Height="100" Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Ellipse Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="20"/>
+                    <materialDesign:PackIcon Kind="AddCircle" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" />
+                </Grid>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Recommended: " HorizontalAlignment="Center" Margin="0 3 0 8" FontSize="11"/>
+                    <TextBlock Text="{Binding Percentage}" HorizontalAlignment="Center" Margin="0 3 0 8" FontSize="11"/>
+                    <TextBlock Text="% of your daily intake" HorizontalAlignment="Center" Margin="0 3 0 8" FontSize="11"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Button>
+        
+    </Grid>
+</UserControl>

@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="PL.Views.ProfileUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:PL"
+             mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="700" d:DesignWidth="300">
+    <StackPanel MaxWidth="400">
+        <TextBlock Text="MY PROFIL" FontWeight="Bold" HorizontalAlignment="Center"  />
+        <Button x:Name="image_butt" Height="100" Width="100"  HorizontalAlignment="Center" Command="{Binding MyOpenFileCommand}">
+            <Ellipse x:Name="image_ellipse" Width="100" Height="100" HorizontalAlignment="Center">
+                <Ellipse.Fill>
+                    <ImageBrush x:Name="image_imageBrush" ImageSource="{Binding Image_Uri}"  />
+                </Ellipse.Fill>
+            </Ellipse>
+        </Button>
+        <TextBox Name="email_txtBox" Margin="0 20" TextAlignment="Center" Text="{Binding Email}"/>
+        <!--<Grid>
+            <materialDesign:PackIcon Kind="Home" Margin="0 25 0 0"/>
+            <TextBox x:Name="address_txtBox" materialDesign:HintAssist.Hint="Address" Margin="20" HorizontalAlignment="Stretch" Text="{Binding Address}"/>
+        </Grid>-->
+        <Grid>
+            <materialDesign:PackIcon Kind="AccountOutline" Margin="0 25 0 0"/>
+            <TextBox  x:Name="firstName_txtBox" materialDesign:HintAssist.Hint="First Name" Margin="20" HorizontalAlignment="Stretch" Text="{Binding FirstName}"/>
+        </Grid>
+        <Grid>
+            <materialDesign:PackIcon Kind="AccountOutline" Margin="0 25 0 0"/>
+            <TextBox x:Name="lastName_txtBox" materialDesign:HintAssist.Hint="Last Name" Margin="20" HorizontalAlignment="Stretch" Text="{Binding LastName}"/>
+        </Grid>
+        <!--<Grid>
+            <materialDesign:PackIcon Kind="KeyMinus" Margin="0 25 0 0"/>
+            <PasswordBox x:Name="password_txtBox" Margin="20" materialDesign:HintAssist.Hint="Password" HorizontalAlignment="Stretch" Password="{Binding Password}"/>
+        </Grid>-->
+        <Grid>
+            <materialDesign:PackIcon Kind="TelephoneIncoming" Margin="0 25 0 0"/>
+            <TextBox x:Name="phone_txtBox" Margin="20" materialDesign:HintAssist.Hint="Telephone" HorizontalAlignment="Stretch" Text="{Binding PhoneNumber}"/>
+        </Grid>
+        <Grid>
+            <materialDesign:PackIcon Kind="HumanMaleHeightVariant" Margin="0 25 0 0"/>
+            <TextBox x:Name="height_txtBox" Margin="20" materialDesign:HintAssist.Hint="Height" HorizontalAlignment="Stretch" Text="{Binding Height}"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="59*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon Kind="WeightKg" Margin="0 25 0 0"/>
+            <TextBox x:Name="weight_txtBox" Margin="20,20,15.333,19.667" materialDesign:HintAssist.Hint="Weight" HorizontalAlignment="Stretch" Text="{Binding Weight}"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="59*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon Kind="Speedometer" Margin="0 25 0 0"/>
+            <TextBox x:Name="weeklyGoal_txtBox" Margin="20,20,15.333,19.667" materialDesign:HintAssist.Hint="Weekly goal" HorizontalAlignment="Stretch" Text="{Binding Goal}"/>
+        </Grid>
+
+        <Button x:Name="Update_butt" Command="{Binding replaceCommand}" CommandParameter="{Binding ElementName=Update_butt, Path=Content}" Content="Update" Margin=" 0 20" HorizontalAlignment="Stretch"/>
+
+    </StackPanel>
+</UserControl>

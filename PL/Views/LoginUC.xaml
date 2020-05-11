@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="PL.Views.LoginUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PL"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local1="clr-namespace:PL.Views"
+             Height="554" Width="357">
+
+    <Grid Margin="5,0,0,1">
+        <Rectangle Height="553" VerticalAlignment="Top" Margin="-3,0,0.333,0">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5, 0">
+                    <GradientStop Color="#FF2231D1"/>
+                    <GradientStop Color="#FF34268A" Offset="1"/>
+                    <GradientStop Color="#FF33288B" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <materialDesign:PackIcon Kind="AccountCircleOutline" VerticalAlignment="Top" HorizontalAlignment="center" Height="100" Width="100" Background="{x:Null}" Foreground="white" BorderBrush="{x:Null}" Margin="20"/>
+        <Rectangle Width="280" Height="240" Fill="White" VerticalAlignment="Bottom" Margin="0 150">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="#FFBBBBBB" BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Grid Width="280" Height="240" VerticalAlignment="Bottom" Margin="0 140">
+            <TextBlock Text="LOGIN" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="5" Foreground="Gray" FontSize="16" FontWeight="Bold"/>
+            <StackPanel VerticalAlignment="Center" Margin="10">
+                <Grid>
+                    <materialDesign:PackIcon Kind="EnvelopeOutline" Margin="0 25"/>
+                    <TextBox x:Name="emailTextBox" materialDesign:HintAssist.Hint="EMAIL" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="20 10" FontSize="12" />
+                </Grid>
+                <Grid>
+                    <materialDesign:PackIcon Kind="KeyMinus" Margin="0 25 "/>
+                    <PasswordBox Name="passwPasswordBox" materialDesign:HintAssist.Hint="PASSWORD" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="20 10" FontSize="12"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <Button x:Name="login_butt" Command="{Binding MyReplaceUCCommand}" CommandParameter="{Binding ElementName=login_butt,Path=Content}" VerticalAlignment="Bottom" Margin="0 130" Width="150" Content="Login"/>
+        <Button x:Name="register_butt" Command="{Binding MyReplaceUCCommand}" CommandParameter="{Binding ElementName=register_butt,Path=Content}" VerticalAlignment="Bottom" Margin="101,0,101.333,77" Width="150" Content="Register"/>
+    </Grid>
+</UserControl>

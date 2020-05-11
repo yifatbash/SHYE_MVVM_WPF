@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="SHYE.FoodTemplateUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:BE="clr-namespace:BE;assembly=BE"
+             xmlns:local="clr-namespace:SHYE"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DataContext="{d:DesignInstance BE:Food }" Width="316">
+    <Grid Height="80" Width="300">
+        <materialDesign:Card
+            Background="{DynamicResource PrimaryHueDarkBrush}"
+            Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+            Padding="8"
+            UniformCornerRadius="10" Margin="0,0,-10,0">
+            <StackPanel Orientation="Horizontal" Margin="0,0,-6,0">
+                <!--<Ellipse Width="40" Height="40" VerticalAlignment="Top">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="..\Images\dinner2.png" Stretch="Fill"></ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>-->
+                <Grid  d:DataContext="{d:DesignInstance {x:Type BE:Food}}" Width="300" MaxWidth="350" Height="80" Margin="0,0,0,-16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0*"/>
+                        <RowDefinition Height="21*"/>
+                        <RowDefinition Height="43*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="25*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="name" Text="{Binding Name}" Grid.Row="0" VerticalAlignment="Top" Margin="20 0 0 0" Grid.ColumnSpan="3" FontSize="20" Grid.RowSpan="3" />
+                    <!--<Button  Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Height="20" Style="{StaticResource MaterialDesignFloatingActionButton}" Width="20" Grid.RowSpan="2" Margin="0,0,10,0" Command="{Binding RemoveCommand}">
+                        <materialDesign:PackIcon Kind="Close" Width="10" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}"  />
+                    </Button>-->
+
+                    <!--data template-->
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Center" Margin="2 5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock x:Name="calories" Text="{Binding Calories}" FontSize="14"/>
+                            <TextBlock Text=" kcal" FontSize="14"/>
+                        </StackPanel>
+                        <TextBlock Text="Calories" Margin="2" FontSize="10" HorizontalAlignment="Center" />
+                    </StackPanel>
+                    <!--data template-->
+                    <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="2 5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock x:Name="crabs"  Text="{Binding Carbs}" FontSize="14"/>
+                            <TextBlock Text=" g" FontSize="14"/>
+                        </StackPanel>
+                        <TextBlock Text="Crabs" Margin="2" FontSize="10" HorizontalAlignment="Center" />
+                    </StackPanel>
+                    <!--data template-->
+                    <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Margin="2 5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock x:Name="Proteins"  Text="{Binding Proteins}" FontSize="14"/>
+                            <TextBlock Text=" g" FontSize="14"/>
+                        </StackPanel>
+                        <TextBlock Text="Proteins" Margin="2" FontSize="10" HorizontalAlignment="Center" />
+                    </StackPanel>
+                    <!--data template-->
+                    <StackPanel Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" Margin="2 5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock x:Name="Fats"  Text="{Binding Fats}" FontSize="14"/>
+                            <TextBlock Text=" g" FontSize="14"/>
+                        </StackPanel>
+                        <TextBlock Text="Fats" Margin="2" FontSize="10" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </materialDesign:Card>
+        <StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>
