@@ -1,5 +1,6 @@
 # SHYE_MVVM_WPF
 SHYE- "See How You Eat" is a simple food tracing application. 
+
 We built this app as part of studing at course "Windows system engineering" at Lev Academic Center in Jerusalem (JCT).
 
 Architecture:
