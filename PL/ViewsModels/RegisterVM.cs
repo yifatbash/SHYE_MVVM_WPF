@@ -19,6 +19,7 @@ namespace PL.ViewsModels
     public class RegisterVM : INotifyPropertyChanged
     {
         private RegisterUC registerUC;
+        private LoginUC loginUC;
         public ReplaceUCCommand MyReplaceUCCommand { get; set; }
         public DateCommand MyDateCommand { get; set; }
         public OpenFileCommand MyOpenFileCommand { get; set; }
@@ -27,6 +28,7 @@ namespace PL.ViewsModels
         {
             CurrentModel = new RegisterModel();
             this.registerUC = regUC;
+            this.loginUC = new LoginUC();
             MyDateCommand = new DateCommand();
             MyDateCommand.showCalendar += MyDateCommand_showCalendar;
 
@@ -115,7 +117,7 @@ namespace PL.ViewsModels
             private get { return CurrentModel.CurrentUser.PhoneNumber; }
             set
             {
-                CurrentModel.CurrentUser.PhoneNumber = value; 
+                CurrentModel.CurrentUser.PhoneNumber = value;
                 if (PropertyChanged != null)
                     PropertyChanged(this, new PropertyChangedEventArgs("PhoneNumber"));
             }
@@ -199,20 +201,42 @@ namespace PL.ViewsModels
         }
         private void MyReplaceUCCommand_ReplaceUserControl(string obj)
         {
-            while (checkFields() == false)
-                return;
-            if (CurrentModel.CheckExistUser())
+            switch (obj)
             {
-                System.Windows.MessageBox.Show("This email already exists, please choose another.", "Exit Email", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            CurrentModel.addNewUser();
-            System.Windows.MessageBox.Show("You are added sucessfully!", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                case "Ok":
+                    {
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).MainVM.UpdateCurrentUser(CurrentModel.CurrentUser);
-            ((MainWindow)System.Windows.Application.Current.MainWindow).mainGrid.Children.Remove(registerUC);
-            ((MainWindow)System.Windows.Application.Current.MainWindow).menuGrid.IsEnabled = true;
-            ((MainWindow)System.Windows.Application.Current.MainWindow).mainGrid.Children.Add(new DashBoardUC());
+                        while (checkFields() == false)
+                            return;
+                        if (CurrentModel.CheckExistUser())
+                        {
+                            System.Windows.MessageBox.Show("This email already exists, please choose another.", "Exit Email", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return;
+                        }
+                        CurrentModel.addNewUser();
+                        System.Windows.MessageBox.Show("You are added sucessfully!", "", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
+                        ((MainWindow)System.Windows.Application.Current.MainWindow).MainVM.UpdateCurrentUser(CurrentModel.CurrentUser);
+                        ((MainWindow)System.Windows.Application.Current.MainWindow).mainGrid.Children.Remove(registerUC);
+                        ((MainWindow)System.Windows.Application.Current.MainWindow).menuGrid.IsEnabled = true;
+                        ((MainWindow)System.Windows.Application.Current.MainWindow).mainGrid.Children.Add(new DashBoardUC());
+                        break;
+                    }
+
+                case "Login":
+                    {
+                        ((MainWindow)System.Windows.Application.Current.MainWindow).mainGrid.Children.Clear();
+                        ((MainWindow)System.Windows.Application.Current.MainWindow).mainGrid.Children.Add(loginUC);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+
+
         }
         #endregion
         bool checkFields()
@@ -251,7 +275,7 @@ namespace PL.ViewsModels
             {
                 System.Windows.MessageBox.Show("Enter your first name, please!", "Phone Number", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
-            } 
+            }
             else
             {
                 var regex = new Regex(@"^05\d([-]{0,1})\d{7}$");
@@ -284,10 +308,10 @@ namespace PL.ViewsModels
             }
             else
             {
-                if (registerUC.PasswordBox.Password.ToString().Length <8)
+                if (registerUC.PasswordBox.Password.ToString().Length < 8)
                 {
                     System.Windows.MessageBox.Show("Your password must contain at least 8 characters", "Password", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    return false; 
+                    return false;
                 }
             }
             if (registerUC.HeightTextBox.Text.ToString() == "")

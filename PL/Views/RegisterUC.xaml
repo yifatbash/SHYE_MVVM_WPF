@@ -134,6 +134,10 @@
                 </TextBox.Text>
             </TextBox>
         </Grid>
-        <Button x:Name="Ok_butt" Content="Ok" Margin=" 0 20 0 0 " HorizontalAlignment="Right" Command="{Binding MyReplaceUCCommand}" CommandParameter="{Binding Content, ElementName=Ok_butt}"/>
+        <Grid>
+            <Button x:Name="Ok_butt" Content="Ok" Margin=" 0 20 0 0 " HorizontalAlignment="Right" Command="{Binding MyReplaceUCCommand}" CommandParameter="{Binding Content, ElementName=Ok_butt}"/>
+            <Button x:Name="Back_butt" Content="Login" Margin=" 0 20 0 0 " HorizontalAlignment="Left" Command="{Binding MyReplaceUCCommand}" CommandParameter="{Binding Content, ElementName=Back_butt}"/>
+        </Grid>
+
     </StackPanel>
 </UserControl>

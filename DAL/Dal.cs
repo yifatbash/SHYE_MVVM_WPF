@@ -255,9 +255,7 @@ namespace DAL
 
             foreach (var t in Meals)
             {
-                if (MealList.Count() == 0)
-                    MealList = GetMealList(t, date, userId);
-                MealList.Concat(GetMealList(t, date, userId));
+                MealList = MealList.Concat(GetMealList(t, date, userId)).ToList();
             }
 
             return MealList;

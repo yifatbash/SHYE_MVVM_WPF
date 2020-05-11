@@ -38,7 +38,7 @@ namespace PL.ViewsModels
                     {
                         //((MainWindow)System.Windows.Application.Current.MainWindow).mainGrid.Children.Remove(MyLoginUC);
                         ((MainWindow)System.Windows.Application.Current.MainWindow).mainGrid.Children.Clear();
-                        ((MainWindow)System.Windows.Application.Current.MainWindow).menuGrid.IsEnabled = true;
+                        //((MainWindow)System.Windows.Application.Current.MainWindow).menuGrid.IsEnabled = true;
                         ((MainWindow)System.Windows.Application.Current.MainWindow).emailTextBlock.Visibility = Visibility.Visible;
                         ((MainWindow)System.Windows.Application.Current.MainWindow).imageView.Visibility = Visibility.Visible;
 

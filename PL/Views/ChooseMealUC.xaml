@@ -28,7 +28,7 @@
         <Button x:Name="Button_Lunch"  Grid.Column="1"  Grid.Row="1" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Margin="86,12,83,8" Command="{Binding ReplaceViewCommand}" CommandParameter="Lunch" />
         <local:AddMealUC x:Name="Dinner" Grid.Row="2" Margin="8" Title="Dinner" ImageUri="..\Images\dinner2.png" Percentage="25"/>
         <Button x:Name="Button_Dinner" Grid.Row="2"  Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Margin="86,12,83,8" Command="{Binding ReplaceViewCommand}" CommandParameter="Dinner"/>
-        <local:AddMealUC x:Name="Snack" Grid.Column="1" Grid.Row="2" Margin="8" Title="Snack" ImageUri="..\Images\snack.png" Percentage="5"/>
+        <local:AddMealUC x:Name="Snack" Grid.Column="1" Grid.Row="2" Margin="8" Title="Snacks" ImageUri="..\Images\snack.png" Percentage="5"/>
         <Button x:Name="Button_Snack" Grid.Column="1" Grid.Row="2" Background="{x:Null}" BorderBrush="{x:Null}" Height="Auto" Margin="86,12,83,8" Command="{Binding ReplaceViewCommand}" CommandParameter="Snacks"/>
     </Grid>
 </UserControl>
